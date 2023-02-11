@@ -27,12 +27,15 @@ public class CategoryDataImpl implements CategoryData {
         SearchSpecification<Category> specification = new SearchSpecification<>(request);
         Pageable pageable = SearchSpecification.getPageable(request.getPage(), request.getSize());
         Page<Category> entities = categoryRepository.findAll(specification, pageable);
-        Page<CategoryDTO> dtoPage = entities.map(new Function<Category, CategoryDTO>() {
-            @Override
-            public CategoryDTO apply(Category entity) {
-                return CategoryMapper.INSTANCE.entity2Dto(entity);
-            }
-        });
-        return dtoPage;
+        return entities.map(CategoryMapper.INSTANCE::entity2Dto);
+
+        //without lamda version
+//        Page<CategoryDTO> dto = entities.map(new Function<Category, CategoryDTO>() {
+//            @Override
+//            public CategoryDTO apply(Category entity) {
+//                return CategoryMapper.INSTANCE.entity2Dto(entity);
+//            }
+//        });
+//        return dto;
     }
 }
