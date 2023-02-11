@@ -1,6 +1,7 @@
 package com.datdt.sortfilterdemo.service.impl;
 
 
+import com.datdt.sortfilterdemo.dto.CategoryDTO;
 import com.datdt.sortfilterdemo.service.CategoryService;
 import com.datdt.sortfilterdemo.data.CategoryData;
 import com.datdt.sortfilterdemo.dto.SearchRequest;
@@ -15,7 +16,7 @@ public class CategoryServiceImpl implements CategoryService {
     private CategoryData categoryData;
 
     @Override
-    public Page<Category> searchCategory(SearchRequest request) {
+    public Page<CategoryDTO> searchCategory(SearchRequest request) {
         return categoryData.searchCategory(request);
     }
 }

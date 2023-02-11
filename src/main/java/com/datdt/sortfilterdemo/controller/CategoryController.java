@@ -1,5 +1,6 @@
 package com.datdt.sortfilterdemo.controller;
 
+import com.datdt.sortfilterdemo.dto.CategoryDTO;
 import com.datdt.sortfilterdemo.service.CategoryService;
 import lombok.extern.slf4j.Slf4j;
 import com.datdt.sortfilterdemo.dto.SearchRequest;
@@ -18,7 +19,7 @@ public class CategoryController {
     private CategoryService categoryService;
 
     @PostMapping(value = "/search")
-    public ResponseEntity<Page<Category>> search(@RequestBody SearchRequest request) {
+    public ResponseEntity<Page<CategoryDTO>> search(@RequestBody SearchRequest request) {
         return ResponseEntity.ok(categoryService.searchCategory(request));
     }
 }
